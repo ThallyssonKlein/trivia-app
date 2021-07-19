@@ -30,6 +30,9 @@ export default function QuestionCard({ setNextButtonDisplay }: Props) {
         <Text style={styles.questionProgressText}>Question {currentQuestion + 1}</Text>
         <Text style={[styles.questionProgressText, { fontSize: 18 }]}> / {totalQuestions}</Text>
       </View>
+      <View style={styles.categoryContainer}>
+        <Text style={styles.categoryText}>{questions[currentQuestion]?.category}</Text>
+      </View>
       <View style={styles.questionContainer}>
         <Text style={styles.questionText}>{questions[currentQuestion]?.question}</Text>
       </View>
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.dark.grayedOutText,
     borderBottomWidth: 2,
     alignSelf: "flex-start",
+    marginBottom : 30
   },
   questionProgressText: {
     color: Colors.dark.grayedOutText,
@@ -80,12 +84,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-end",
   },
+  categoryContainer: {
+    marginBottom: 30
+  },
   questionContainer: {
-    marginBottom: 20,
+    marginBottom: 50,
     alignContent: "flex-end",
   },
+  categoryText: {
+    color: Colors.light.text,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
   questionText: {
-    color: Colors.dark.text,
+    color: Colors.light.text,
     fontSize: 20,
     fontWeight: "bold",
   },
