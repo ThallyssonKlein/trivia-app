@@ -5,7 +5,7 @@ import { TransformedQuestions, Question, ApiResponse, Answer } from "../types";
 
 // config
 import apiEndpoints from "../constants/API/endpoints";
-import { transformQuestions, correctAnswers as _correctAnswers } from "../utils";
+import { transformQuestions, correctAnswers as _correctAnswers, titles as _titles} from "../utils";
 
 type ContextTypes = {
   questions: TransformedQuestions;
@@ -15,6 +15,8 @@ type ContextTypes = {
   correctAnswers: string[];
   userAnswers: Answer[];
   setUserAnswers: (answer: Answer[]) => void;
+  titles: string[];
+  setTitles: (value: string[]) => void;
 };
 
 export const QAContext = React.createContext<ContextTypes>({
@@ -25,6 +27,8 @@ export const QAContext = React.createContext<ContextTypes>({
   correctAnswers: [],
   userAnswers: [],
   setUserAnswers() {},
+  titles: [],
+  setTitles() {}
 });
 
 type Props = {
@@ -37,6 +41,7 @@ export function QAContextProvider({ children }: Props) {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const [correctAnswers, setCorrectAnswers] = React.useState<string[]>([]);
   const [userAnswers, setUserAnswers] = React.useState<Answer[]>([]);
+  const [titles, setTitles] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     async function fetchQuestions() {
@@ -44,10 +49,12 @@ export function QAContextProvider({ children }: Props) {
 
       const questions = transformQuestions(response.results);
       const correctAnswers = _correctAnswers(response.results);
+      const titles = _titles(response.results);
 
       setQuestions(questions);
       setTotalQuestions(questions.length);
       setCorrectAnswers(correctAnswers);
+      setTitles(titles);
     }
 
     fetchQuestions();
@@ -63,6 +70,8 @@ export function QAContextProvider({ children }: Props) {
         correctAnswers,
         userAnswers,
         setUserAnswers,
+        titles,
+        setTitles
       }}
     >
       {children}

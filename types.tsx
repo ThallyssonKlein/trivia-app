@@ -21,7 +21,7 @@ export type Question = {
   question: string;
   correct_answer: string;
   incorrect_answers: [string] | string;
-  id?: number;
+  id: number;
 };
 
 export type ApiResponse = {

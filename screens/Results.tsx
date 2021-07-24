@@ -1,25 +1,27 @@
-import * as React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { ScreenProps } from "../types";
 
 // components
-import { BorderLayout, Top, Center, Bottom } from "../constants/Layout";
+import { BorderLayout, Center } from "../constants/Layout";
 
 // config
 import Colors from "../constants/Colors";
 
-function Accordion() {
-  return <View></View>;
-}
+import { QAContext } from "../contexts/QAContext";
 
+import AnswersContainer from "../components/Result/AnswersContainer";
+
+import { QAContextProvider } from "../contexts/QAContext";
 export default function Results({ route }: ScreenProps<"Results">) {
+
   return (
-    <BorderLayout style={{ backgroundColor: Colors.dark.background }}>
+    <BorderLayout style={{ backgroundColor: Colors.light.background }}>
       <Center>
-        <ScrollView>{route?.params.userAnswers.map((answer) => console.log(answer))}</ScrollView>
+           <QAContextProvider>
+              <AnswersContainer route={route}/>
+           </QAContextProvider>
       </Center>
     </BorderLayout>
   );
 }
-
-const styles = StyleSheet.create({});
