@@ -14,13 +14,13 @@ export default function ProgressTrack() {
   const { currentQuestion } = React.useContext(QAContext);
   const [timer, setTimer] = React.useState(30);
 
-  //   React.useEffect(() => {
-  //     const interval = setInterval(() => {
-  //       setTimer(timer - 1);
-  //     }, 1000);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(timer - 1);
+    }, 1000);
 
-  //     return () => clearInterval(interval);
-  //   }, [timer, questionIndex]);
+    return () => clearInterval(interval);
+  }, [timer, currentQuestion]);
 
   return (
     <LinearGradient
