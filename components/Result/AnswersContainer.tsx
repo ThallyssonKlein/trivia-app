@@ -14,9 +14,9 @@ export default function AnswersContainer({ route }: Props){
     return <>
                 {
                     correctAnswers.map((answer, index) => {
-                        return <Answer isCorrect={route?.params.userAnswers[index][index] === new Boolean(answer)}
-                                    key={index}
-                                    text={titles[index]}/>
+                        return <Answer isCorrect={route?.params.userAnswers[index][index + 1 + ""] === !!answer}
+                                       key={index}
+                                       text={titles[index]}/>
                     })  
                 }
             </>
