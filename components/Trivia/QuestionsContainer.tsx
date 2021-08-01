@@ -44,7 +44,7 @@ export default function QuestionsContainer({ navigation }: Props) {
         <QuestionCard setNextButtonDisplay={setNextButtonDisplay} />
       </Center>
       <Bottom>
-        {nextButtonDisplay && <Button title="Confirm" onPress={handleQuestions} />}
+        {(nextButtonDisplay && !showResultsButtonDisplay) && <Button title="Confirm" onPress={handleQuestions} />}
         {showResultsButtonDisplay && (
           <Button
             title="Show results"
