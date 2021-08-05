@@ -35,7 +35,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export function QAContextProvider({ children }: Props) {
+export default function QAContextProvider({ children }: Props) {
   const [questions, setQuestions] = React.useState<TransformedQuestions>([]);
   const [totalQuestions, setTotalQuestions] = React.useState(0);
   const [currentQuestion, setCurrentQuestion] = React.useState(0);

@@ -15,11 +15,13 @@ export default function ProgressTrack() {
   const [timer, setTimer] = React.useState(30);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(timer - 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
+    if(timer >= 1){
+      const interval = setInterval(() => {
+        setTimer(timer - 1);
+      }, 1000);
+  
+      return () => clearInterval(interval);
+    }
   }, [timer, currentQuestion]);
 
   return (

@@ -7,6 +7,8 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
+import QaContextProvider from './contexts/QAContext';
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -16,7 +18,9 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <QaContextProvider>
+          <Navigation colorScheme={colorScheme} />
+        </QaContextProvider>
         <StatusBar />
       </SafeAreaProvider>
     );

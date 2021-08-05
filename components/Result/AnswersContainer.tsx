@@ -11,6 +11,8 @@ type Props = {
 export default function AnswersContainer({ route }: Props){
     const { correctAnswers, titles } = useContext(QAContext);
 
+    console.log(correctAnswers);
+    console.log(route?.params.userAnswers);
     return <>
                 {
                     correctAnswers.map((answer, index) => {

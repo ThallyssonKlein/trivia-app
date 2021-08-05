@@ -5,9 +5,6 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { QuestionsContainer } from "../components/Trivia";
 
-// contexts
-import { QAContextProvider } from "../contexts/QAContext";
-
 // hooks
 import useColorScheme from "../hooks/useColorScheme";
 
@@ -27,9 +24,7 @@ export default function Trivia({ navigation }: ScreenProps<"Trivia">) {
         { backgroundColor: colorScheme === "dark" ? Colors.dark.background : Colors.light.background },
       ]}
     >
-      <QAContextProvider>
-        <QuestionsContainer navigation={navigation} />
-      </QAContextProvider>
+      <QuestionsContainer navigation={navigation} />
     </SafeAreaView>
   );
 }
