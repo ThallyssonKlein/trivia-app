@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { ScrollView } from "react-native";
 
 import { QAContext } from "../../contexts/QAContext"; 
 
@@ -11,9 +12,7 @@ type Props = {
 export default function AnswersContainer({ route }: Props){
     const { correctAnswers, titles } = useContext(QAContext);
 
-    console.log(correctAnswers);
-    console.log(route?.params.userAnswers);
-    return <>
+    return <ScrollView>
                 {
                     correctAnswers.map((answer, index) => {
                         return <Answer isCorrect={route?.params.userAnswers[index][index + 1 + ""] === !!answer}
@@ -21,5 +20,5 @@ export default function AnswersContainer({ route }: Props){
                                        text={titles[index]}/>
                     })  
                 }
-            </>
+            </ScrollView>
 }

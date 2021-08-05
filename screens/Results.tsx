@@ -3,7 +3,7 @@ import { StyleSheet, Text } from "react-native";
 import { ScreenProps } from "../types";
 
 // components
-import { BorderLayout, Center, Top } from "../constants/Layout";
+import { BorderLayout, Center, Top, Bottom } from "../constants/Layout";
 
 // config
 import Colors from "../constants/Colors";
@@ -15,10 +15,6 @@ import { QAContext } from "../contexts/QAContext";
 export default function Results({ route }: ScreenProps<"Results">) {
   const { correctAnswers, userAnswers } = useContext(QAContext);
   const [ score, setScore ] = useState(0);
-
-  console.log("------");
-  console.log(correctAnswers);
-  console.log("------");
 
   useEffect(() => {
       let score = 0;
@@ -38,6 +34,9 @@ export default function Results({ route }: ScreenProps<"Results">) {
       <Center>
         <AnswersContainer route={route}/>
       </Center>
+      <Bottom>
+        <Text>Test</Text>
+      </Bottom>
     </BorderLayout>
   );
 }
